@@ -24,6 +24,7 @@
     "core-js": "2.5.4",
     "jquery": "^3.3.1",
     "rxjs": "6.0.0",
+    "toastr": "^2.1.4",
     "zone.js": "0.8.26"
   },
   "devDependencies": {

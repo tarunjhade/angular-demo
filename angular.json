@@ -21,11 +21,13 @@
               "src/favicon.ico"
             ],
             "styles": [
+              "node_modules/toastr/build/toastr.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/toastr/build/toastr.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },
