@@ -4,7 +4,7 @@ import {Component, Input} from '@angular/core';
     // tslint:disable-next-line:component-selector
     selector: 'event-thumbnail',
     template: `
-    <div class="card bg-light thumbnail">
+    <div [routerLink]="['/events', event.id]" class="card bg-light thumbnail">
         <div class="card-body">
             <h2>{{event?.name}}</h2>
             <div>Date: {{event?.date}}</div>
