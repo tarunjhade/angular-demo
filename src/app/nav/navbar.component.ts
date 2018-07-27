@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
     // tslint:disable-next-line:component-selector
     selector: 'nav-bar',
     templateUrl: './navbar.component.html',
-    styles:[`
+    styles: [`
     li > a.active {color:#f97924 !important;}
     `]
 })
