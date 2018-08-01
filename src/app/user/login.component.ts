@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 @Component({
     templateUrl: './login.component.html',
-    styles:[`
+    styles: [`
     em{float:right; color:#e056c5; padding-left:10px;}
     `]
 })
