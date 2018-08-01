@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { restrictedWords } from '..';
+import { restrictedWords, ISession } from '../shared/index';
+import { EventEmitter } from 'events';
 
 @Component({
+    // tslint:disable-next-line:component-selector
+    selector: 'create-session',
     templateUrl: './create-session.component.html',
     styles: [`
       em{float:right; color:#e056c5; padding-left:10px;}
@@ -12,6 +15,8 @@ import { restrictedWords } from '..';
   `]
 })
 export class CreateSessionComponent implements OnInit {
+    @Output() saveNewSession = new EventEmitter();
+    @Output() cancelAddSession = new EventEmitter();
     newSessionForm: FormGroup;
     name: FormControl;
     presenter: FormControl;
@@ -35,6 +40,20 @@ export class CreateSessionComponent implements OnInit {
     }
 
     saveSession(formValues) {
-        console.log(formValues);
+        // tslint:disable-next-line:prefer-const
+        let session: ISession = {
+            id: undefined,
+            name: formValues.name,
+            duration: formValues.duration,
+            presenter: formValues.presenter,
+            level: formValues.level,
+            abstract: formValues.abstract,
+            voters: []
+        };
+        this.saveNewSession.emit(session);
+    }
+
+    cancel() {
+        this.cancelAddSession.emit('cancel');
     }
 }
