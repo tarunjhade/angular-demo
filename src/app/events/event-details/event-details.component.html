@@ -3,18 +3,18 @@
 
   <div class="row">
     <div class="col-md-11">
-      <h2>{{event?.name}} </h2>
+      <h2>{{event?.name | uppercase}} </h2>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6">
       <div>
-        <strong>Date:</strong> {{event?.date}}</div>
+        <strong>Date:</strong> {{event?.date | date:'shortDate'}}</div>
       <div>
         <strong>Time:</strong> {{event?.time}}</div>
       <div>
-        <strong>Price:</strong> ${{event?.price}}</div>
+        <strong>Price:</strong> {{event?.price | currency:'USD'}}</div>
     </div>
     <div class="col-md-6">
       <address>
@@ -25,14 +25,26 @@
     </div>
   </div>
   <hr>
-  <div class="row">
+  <div class="row mb-2">
     <div class="col-md-2">
       <h3>Sessions</h3>
+    </div>
+    <div class="col-md-7">
+      <div class="btn-group btn-group-sm ml-1 mr-1">
+        <button class="btn btn-default" [class.active]="sortBy === 'name'" (click)="sortBy = 'name'"> By Name</button>
+        <button class="btn btn-default" [class.active]="sortBy === 'votes'" (click)="sortBy = 'votes'"> By Votes</button>
+      </div>
+      <div class="btn-group btn-group-sm">
+        <button class="btn btn-default" [class.active]="filterBy === 'all'" (click)="filterBy = 'all'"> All</button>
+        <button class="btn btn-default" [class.active]="filterBy === 'beginner'" (click)="filterBy = 'beginner'"> Beginner</button>
+        <button class="btn btn-default" [class.active]="filterBy === 'intermediate'" (click)="filterBy = 'intermediate'"> Intermediate</button>
+        <button class="btn btn-default" [class.active]="filterBy === 'advanced'" (click)="filterBy = 'advanced'"> Advanced</button>
+      </div>
     </div>
     <div class="col-md-2">
       <a (click)="addSession()">Add Session</a>
     </div>
   </div>
-  <session-list *ngIf="!addMode" [sessions]="event?.sessions"></session-list>
+  <session-list [sortBy]="sortBy" [filterBy]="filterBy" *ngIf="!addMode" [sessions]="event?.sessions"></session-list>
   <create-session *ngIf="addMode" (saveNewSession)="saveNewSession($event)" (cancelAddSession)="cancelAddSession($event)"></create-session>
 </div>
