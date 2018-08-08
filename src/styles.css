@@ -14,6 +14,7 @@
   
   button {
     color: #555;
+    border-radius: 0px !important;
   }
   
   [hidden] {
@@ -31,4 +32,8 @@
   }
   .toast-warning {
     background-color: #f89406;
+  }
+
+  input[type=text], input[type=password], select, textarea {
+    border-radius: 0px !important;
   }

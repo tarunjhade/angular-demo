@@ -7,7 +7,7 @@ import { IEvent } from '.';
     // tslint:disable-next-line:component-selector
     template: `
     <div>
-        <h1>Upcoming Angular Events</h1>
+        <h2 class="text-white">Upcoming Angular Events</h2>
         <hr>
         <div class="row">
             <div *ngFor="let event of events" class="col-5">
