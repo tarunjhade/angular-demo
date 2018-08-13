@@ -37,3 +37,9 @@
   input[type=text], input[type=password], select, textarea {
     border-radius: 0px !important;
   }
+
+  .btn-group>.btn:active {
+    z-index: 1;
+    background: grey;
+    color: white;
+  }

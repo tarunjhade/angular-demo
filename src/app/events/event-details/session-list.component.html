@@ -1,9 +1,10 @@
-<div class="row shadow mb-4" *ngFor="let session of visibleSession">
+<div class="row shadow mb-4 px-2 py-2" *ngFor="let session of visibleSession">
   <div class="col-md-10">
     <collapsible-well>
       <div well-title>
-        {{session.name}}
-        <i *ngIf="session.voters.length > 3" class="glyphicon glyphicon-fire" style="color:red;"></i>
+        <h4>{{session.name}}
+          <i *ngIf="session.voters.length > 3" class="glyphicon glyphicon-fire" style="color:red;"></i>
+        </h4>
       </div>
 
       <div well-body>
