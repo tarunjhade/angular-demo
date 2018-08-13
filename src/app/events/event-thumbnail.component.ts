@@ -5,9 +5,9 @@ import { IEvent } from '.';
     // tslint:disable-next-line:component-selector
     selector: 'event-thumbnail',
     template: `
-    <div [routerLink]="['/events', event.id]" class="card bg-light thumbnail">
+    <div [routerLink]="['/events', event.id]" class="card bg-secondary thumbnail mb-2 text-white shadow">
         <div class="card-body">
-            <h2>{{event?.name | uppercase}}</h2>
+            <h3>{{event?.name | uppercase}}</h3>
             <div>Date: {{event?.date | date:'shortDate'}}</div>
             <div [ngClass]="getStartTimeClass()" [ngSwitch]="event?.time">
                 Time: {{event?.time}}

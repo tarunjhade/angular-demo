@@ -2,7 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { restrictedWords, ISession } from '../shared/index';
-import { EventEmitter } from 'events';
+import { EventEmitter } from '@angular/core';
 
 @Component({
     // tslint:disable-next-line:component-selector

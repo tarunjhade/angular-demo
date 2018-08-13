@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../shared/event.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { IEvent, ISession } from '../shared/index';
 
 @Component({
@@ -24,7 +24,11 @@ export class EventDetailsComponent implements OnInit {
 
     ngOnInit() {
         // + indicates typecasting to number
-        this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
+        // handle route param changes in case of change of route param by searchSession component
+        this.route.params.forEach((params: Params) => {
+            this.event = this.eventService.getEvent(+params['id']);
+            this.addMode = false;
+        });
     }
     addSession() {
         this.addMode = true;
