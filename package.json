@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
+    "server": "node node_modules/ngf-server/server.js",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -23,6 +24,7 @@
     "bootstrap": "^4.1.3",
     "core-js": "2.5.4",
     "jquery": "^3.3.1",
+    "ngf-server": "^1.0.2",
     "rxjs": "6.0.0",
     "toastr": "^2.1.4",
     "zone.js": "0.8.26"

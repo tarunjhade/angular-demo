@@ -10,8 +10,12 @@ import {
   CreateEventComponent,
   EventRouteActivator,
   EventListResolver,
+  EventResolver,
   CreateSessionComponent,
   SessionListComponent,
+  UpvoteComponent,
+  VoterService,
+  LocationValidator,
   DurationPipe
 } from './events/index';
 
@@ -28,6 +32,7 @@ import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // tslint:disable-next-line:prefer-const
 let toastr: Toastr = window['toastr'];
@@ -38,7 +43,8 @@ let jQuery = window['$'];
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   declarations: [
     EventsAppComponent,
@@ -53,10 +59,13 @@ let jQuery = window['$'];
     CollapsibleWellComponent,
     SimpleModalComponent,
     ModalTriggerDirective,
+    LocationValidator,
+    UpvoteComponent,
     DurationPipe
   ],
   providers: [
     EventService,
+    VoterService,
     {
       provide: TOASTR_TOKEN,
       useValue: toastr
@@ -67,6 +76,7 @@ let jQuery = window['$'];
     },
     EventRouteActivator,
     EventListResolver,
+    EventResolver,
     AuthService,
     {
       provide: 'canDeactivateCreateEvent',

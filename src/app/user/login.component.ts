@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
@@ -11,10 +11,17 @@ import { Router } from '@angular/router';
 export class LoginComponent {
     userName;
     password;
-    constructor(private authService: AuthService, private route: Router) {}
+    loginInvalid = false;
+    constructor(private authService: AuthService, private route: Router) { }
     login(formValues) {
-        this.authService.loginUser(formValues.userName, formValues.password);
-        this.route.navigate(['events']);
+        this.authService.loginUser(formValues.userName, formValues.password)
+            .subscribe(res => {
+                if (!res) {
+                    this.loginInvalid = true;
+                } else {
+                    this.route.navigate(['events']);
+                }
+            });
     }
 
     cancel() {
