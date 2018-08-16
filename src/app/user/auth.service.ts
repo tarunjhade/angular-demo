@@ -26,8 +26,21 @@ export class AuthService {
         return !!this.currentUser;
     }
 
+    checkAuthStatus() {
+        return this.http.get('/api/currentIdentity')
+            .pipe(tap(data => {
+                if (data instanceof Object) {
+                    this.currentUser = <IUser>data;
+                }
+            }));
+    }
+
     updateCurrentUser(firstName: string, lastName: string) {
         this.currentUser.firstName = firstName;
         this.currentUser.lastName = lastName;
+
+        const options = { headers: new HttpHeaders({ 'content-type': 'application/json' }) };
+        const url = `/api/users/${this.currentUser.id}`;
+        return this.http.put(url, this.currentUser, options);
     }
 }
