@@ -10,6 +10,7 @@ import {
   CreateEventComponent,
   EventRouteActivator,
   EventListResolver,
+  EventResolver,
   CreateSessionComponent,
   SessionListComponent,
   UpvoteComponent,
@@ -75,6 +76,7 @@ let jQuery = window['$'];
     },
     EventRouteActivator,
     EventListResolver,
+    EventResolver,
     AuthService,
     {
       provide: 'canDeactivateCreateEvent',

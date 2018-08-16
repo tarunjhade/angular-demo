@@ -25,20 +25,24 @@ export class EventDetailsComponent implements OnInit {
     ngOnInit() {
         // + indicates typecasting to number
         // handle route param changes in case of change of route param by searchSession component
-        this.route.params.forEach((params: Params) => {
-            this.event = this.eventService.getEvent(+params['id']);
+        // get data from resolver
+        this.route.data.forEach((data) => {
+            this.event = data['event'];
             this.addMode = false;
         });
     }
+
     addSession() {
         this.addMode = true;
     }
+
     saveNewSession(session: ISession) {
         const nextId = Math.max.apply(null, this.event.sessions.map(s => s.id));
         session.id = nextId;
         this.event.sessions.push(session);
-        this.eventService.updateEvent(this.event);
-        this.addMode = false;
+        this.eventService.updateEvent(this.event).subscribe(() => {
+            this.addMode = false;
+        });
     }
 
     cancelAddSession() {
